@@ -13,9 +13,9 @@ with open('books.csv') as fp:
                 kol_z += 1
         name = row [4]
         price = row [7]
-        if row [4] == search:
-            price = price.replace('.',',')
-            if int(price[0:3]) > pr:
-                print(f'название: {row[1]}', f'цена: {row[7]}')
+        if row [4] == search and len(price) > 3 and price [2] != '.':
+            if int(price [:3]) > pr:
+                print(f'название: {row[1]}\nцена: {price}')
     print(f'кол-во записей:{kol_z}')
     print(f'количество строк:{rowcount}')
+
