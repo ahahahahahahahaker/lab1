@@ -1,20 +1,21 @@
 import csv
 #вариант 6
-k=0
+kol_z = 0
+pr = 150
 with open('books.csv') as fp:
     reader = csv.reader(fp,delimiter=';')
-    rowcount  = 0
-    print('введите ФИО автора:')
-    a=input()
+    rowcount = 0
+    search = input('введите ФИО автора:\n')
     for row in reader:
-        rowcount+= 1
-        n=0
+        rowcount += 1
         for i in range(13):
-            if len(row[i])>30:
-                k+=1
-        if row[4]==a:
-            row[7]=row[7].replace('.',',')
-            if int(row[7][0:3])>150:
-                print('название:',row[1], 'цена:',row[7])
-    print('кол-во записей:', k)
-    print("количество строк:", rowcount)
+            if len(row [i]) > 30:
+                kol_z += 1
+        name = row [4]
+        price = row [7]
+        if row [4] == search:
+            price = price.replace('.',',')
+            if int(price[0:3]) > pr:
+                print(f'название: {row[1]}', f'цена: {row[7]}')
+    print(f'кол-во записей:{kol_z}')
+    print(f'количество строк:{rowcount}')
