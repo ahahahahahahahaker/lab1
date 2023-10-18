@@ -6,6 +6,7 @@ with open('books.csv') as fp:
     reader = csv.reader(fp,delimiter=';')
     rowcount = 0
     search = input('введите ФИО автора:\n')
+    next(reader)
     for row in reader:
         rowcount += 1
         for i in range(13):
@@ -13,9 +14,7 @@ with open('books.csv') as fp:
                 kol_z += 1
         name = row [4]
         price = row [7]
-        if row [4] == search and len(price) > 3 and price [2] != '.':
-            if int(price [:3]) > pr:
+        if search == name and float(price) > pr:
                 print(f'название: {row[1]}\nцена: {price}')
     print(f'кол-во записей:{kol_z}')
     print(f'количество строк:{rowcount}')
-
